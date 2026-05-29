@@ -70,6 +70,180 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 		<style id="wp-custom-css">.portfolio-info-panel{border-bottom-right-radius:5px;border-bottom-left-radius:5px;border:2px solid rgba(204,204,204,0.09);width:100%;color:#888888;font-family:'Raleway',sans-serif;background-color:#fafafa}.portfolio-info-panel ul li{list-style:none;margin-bottom:2px;width:650px}.portfolio-info-panel ul{display:flex;flex-wrap:wrap}.bmc-btn-container{margin:1.5em auto;max-width:700px}.wp-block-kevinbatdorf-code-block-pro{margin:1.5em auto;max-width:700px}.portfolio-info-panel p{/* margin:16px 0;*/padding:5px 10px 5px 10px}.portfolio-header{margin:1.5em auto;max-width:700px}.entry-box header .entry-date,.entry-box header .entry-comments{color:#888888;font-family:'Raleway',sans-serif;margin-right:15px}.entry-box header .entry-date span,.entry-box header .entry-comments span{margin-right:7px}.wp-block-table{margin:1.5em auto;max-width:fit-content}</style>
 		<!-- OceanWP CSS -->
 <style type="text/css">/* General CSS */.container{width:1000px}@media only screen and (min-width:960px){.content-area,.content-left-sidebar .content-area{width:90%}}/* Header CSS */#site-header.has-header-media .overlay-header-media{background-color:rgba(0,0,0,0.5)}</style>
+<style id="portfolio-refresh-css">
+/* === Portfolio Refresh: CSS Overrides === */
+
+/* Typography */
+body, .site-content, .entry, h1, h2, h3, h4, h5, h6,
+.apbPostTitle a, .apbPostExcerpt, .apbPostMeta {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Links */
+a { transition: color 0.2s ease; }
+
+/* Card hover effects */
+.apbPost {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.apbPost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Content spacing */
+#content-wrap { padding-top: 2em; padding-bottom: 2em; }
+.apbGridPosts { gap: 1.5em; }
+
+/* Header polish */
+#site-header {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+#site-header .menu-link:hover .text-wrap {
+  color: #4527a4;
+}
+
+/* Hero section */
+.portfolio-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 48px 24px;
+  margin: -30px -30px 0 -30px;
+}
+.portfolio-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.portfolio-hero-photo {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid rgba(167,139,250,0.3);
+  object-fit: cover;
+}
+.portfolio-hero-text { color: #fff; }
+.portfolio-hero-name {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+.portfolio-hero-title {
+  font-size: 1.1em;
+  color: #a78bfa;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+.portfolio-hero-tagline {
+  font-size: 0.95em;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+.portfolio-hero-ctas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.portfolio-hero-cta {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.portfolio-hero-cta:hover { opacity: 0.85; }
+.portfolio-hero-cta--primary {
+  background: #4527a4;
+  color: #fff;
+}
+.portfolio-hero-cta--secondary {
+  background: transparent;
+  color: #a78bfa;
+  border: 1px solid #a78bfa;
+}
+.portfolio-hero-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.portfolio-hero-badge {
+  background: rgba(69,39,164,0.25);
+  color: #c4b5fd;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75em;
+}
+.portfolio-hero-transition {
+  height: 24px;
+  background: linear-gradient(to bottom, #16213e, #f5f5f5);
+  margin: 0 -30px;
+}
+
+/* Bio (deemphasized below hero) */
+.portfolio-bio {
+  max-width: 700px;
+  margin: 2em auto;
+  color: #555;
+  font-size: 0.95em;
+  line-height: 1.7;
+}
+
+/* New footer */
+.portfolio-footer {
+  background: #1a1a2e;
+  padding: 24px 32px;
+}
+.portfolio-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.portfolio-footer-brand { color: #fff; }
+.portfolio-footer-name {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+.portfolio-footer-role {
+  color: #94a3b8;
+  font-size: 0.8em;
+  margin-top: 2px;
+}
+.portfolio-footer-social {
+  display: flex;
+  gap: 16px;
+}
+.portfolio-footer-social a {
+  color: #a78bfa;
+  font-size: 1.2em;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+.portfolio-footer-social a:hover { color: #c4b5fd; }
+.portfolio-footer-copyright {
+  color: #64748b;
+  font-size: 0.75em;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .portfolio-hero { padding: 32px 16px; }
+  .portfolio-hero-inner { flex-direction: column; text-align: center; }
+  .portfolio-hero-ctas { justify-content: center; }
+  .portfolio-hero-badges { justify-content: center; }
+  .portfolio-footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
 </head>
 
 <body class="home page-template-default page page-id-131 wp-embed-responsive oceanwp-theme dropdown-mobile default-breakpoint content-full-width content-max-width has-topbar page-header-disabled has-breadcrumbs has-blog-grid" itemscope="itemscope" itemtype="https://schema.org/WebPage">
