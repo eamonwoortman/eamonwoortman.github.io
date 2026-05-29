@@ -67,7 +67,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 <link rel="shortlink" href="https://eamonwoortman.github.io/">
 <link rel="alternate" type="application/json+oembed" href="https://eamonwoortman.github.io/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Feamonwoortman.github.io%2F">
 <link rel="alternate" type="text/xml+oembed" href="https://eamonwoortman.github.io/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Feamonwoortman.github.io%2F#038;format=xml">
-		<style id="wp-custom-css">.portfolio-info-panel{border-bottom-right-radius:5px;border-bottom-left-radius:5px;border:2px solid rgba(204,204,204,0.09);width:100%;color:#888888;font-family:'Raleway',sans-serif;background-color:#fafafa}.portfolio-info-panel ul li{list-style:none;margin-bottom:2px;width:650px}.portfolio-info-panel ul{display:flex;flex-wrap:wrap}.bmc-btn-container{margin:1.5em auto;max-width:700px}.wp-block-kevinbatdorf-code-block-pro{margin:1.5em auto;max-width:700px}.portfolio-info-panel p{/* margin:16px 0;*/padding:5px 10px 5px 10px}.portfolio-header{margin:1.5em auto;max-width:700px}.entry-box header .entry-date,.entry-box header .entry-comments{color:#888888;font-family:'Raleway',sans-serif;margin-right:15px}.entry-box header .entry-date span,.entry-box header .entry-comments span{margin-right:7px}.wp-block-table{margin:1.5em auto;max-width:fit-content}</style>
+		<style id="wp-custom-css">.portfolio-info-panel{border-bottom-right-radius:5px;border-bottom-left-radius:5px;border:2px solid rgba(204,204,204,0.09);width:100%;color:#888888;font-family:'Raleway',sans-serif;background-color:#fafafa}.portfolio-info-panel ul li{list-style:none;margin-bottom:2px;width:650px}.portfolio-info-panel ul{display:flex;flex-wrap:wrap}.bmc-btn-container{margin:1.5em auto;max-width:700px}.wp-block-kevinbatdorf-code-block-pro{margin:1.5em auto;max-width:700px}.portfolio-info-panel p{/* margin:16px 0;*/padding:5px 10px 5px 10px}.portfolio-header{margin:1.5em auto;max-width:700px}.entry-box header .entry-date,.entry-box header .entry-comments{color:#888888;font-family:'Raleway',sans-serif;margin-right:15px}.entry-box header .entry-date span,.entry-box header .entry-comments span{margin-right:7px}.wp-block-table{margin:1.5em auto;max-width:fit-content}.dynamic-years{color:#5e3bb5;font-weight:600}</style>
 		<!-- OceanWP CSS -->
 <style type="text/css">/* General CSS */.container{width:1000px}@media only screen and (min-width:960px){.content-area,.content-left-sidebar .content-area{width:90%}}/* Header CSS */#site-header.has-header-media .overlay-header-media{background-color:rgba(0,0,0,0.5)}</style>
 </head>
@@ -246,7 +246,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>My name is Eamon Woortman, I&#8217;m a&nbsp;versatile game programmer bringing more than <span class="dynamic-years" data-since="2011"></span> years in game design, development and integration.</p>
+<p>My name is Eamon Woortman, I&#8217;m a&nbsp;versatile game programmer bringing more than <span class="dynamic-years" data-since="2011"> years</span> in game design, development and integration.</p>
 
 
 
@@ -254,7 +254,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>Additionally, I&#8217;ve got more than <span class="dynamic-years" data-since="2005"></span> years of modding and programming experience in individual projects, as well as collaborative projects.<br>I am driven to create fun games for the players which also stimulates online communities.</p>
+<p>Additionally, I&#8217;ve got more than <span class="dynamic-years" data-since="2005"> years</span> of modding and programming experience in individual projects, as well as collaborative projects.<br>I am driven to create fun games for the players which also stimulates online communities.</p>
 
 
 
@@ -548,6 +548,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 <script src="https://eamonwoortman.github.io/wp-content/themes/oceanwp/assets/js/scroll-top.min.js?ver=1.0" id="oceanwp-scroll-top-js"></script>
 <script src="https://eamonwoortman.github.io/wp-content/themes/oceanwp/assets/js/select.min.js?ver=1.0" id="oceanwp-select-js"></script>
 <script src="https://eamonwoortman.github.io/wp-content/plugins/bj-lazy-load/js/bj-lazy-load.min.js?ver=2" id="BJLL-js"></script>
-<script>document.querySelectorAll('.dynamic-years').forEach(function(el){el.textContent=new Date().getFullYear()-parseInt(el.dataset.since)});</script>
+<script>document.querySelectorAll('.dynamic-years').forEach(function(el){el.textContent=(new Date().getFullYear()-parseInt(el.dataset.since))+el.textContent});</script>
 </body>
 </html>
