@@ -246,7 +246,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>My name is Eamon Woortman, I&#8217;m a&nbsp;versatile game programmer bringing more than 12 years in game design, development and integration.</p>
+<p>My name is Eamon Woortman, I&#8217;m a&nbsp;versatile game programmer bringing more than <span class="dynamic-years" data-since="2011"></span> years in game design, development and integration.</p>
 
 
 
@@ -254,7 +254,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>Additionally, I&#8217;ve got more than 18 years of modding and programming experience in individual projects, as well as collaborative projects.<br>I am driven to create fun games for the players which also stimulates online communities.</p>
+<p>Additionally, I&#8217;ve got more than <span class="dynamic-years" data-since="2005"></span> years of modding and programming experience in individual projects, as well as collaborative projects.<br>I am driven to create fun games for the players which also stimulates online communities.</p>
 
 
 
@@ -548,5 +548,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 <script src="https://eamonwoortman.github.io/wp-content/themes/oceanwp/assets/js/scroll-top.min.js?ver=1.0" id="oceanwp-scroll-top-js"></script>
 <script src="https://eamonwoortman.github.io/wp-content/themes/oceanwp/assets/js/select.min.js?ver=1.0" id="oceanwp-select-js"></script>
 <script src="https://eamonwoortman.github.io/wp-content/plugins/bj-lazy-load/js/bj-lazy-load.min.js?ver=2" id="BJLL-js"></script>
+<script>document.querySelectorAll('.dynamic-years').forEach(function(el){el.textContent=new Date().getFullYear()-parseInt(el.dataset.since)});</script>
 </body>
 </html>
