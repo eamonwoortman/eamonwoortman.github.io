@@ -620,67 +620,23 @@ a { transition: color 0.2s ease; }
 
 		
 
-<div id="footer-widgets" class="oceanwp-row clr">
-
-	
-	<div class="footer-widgets-inner container">
-
-					<div class="footer-box span_1_of_4 col col-1">
-							</div>
-<!-- .footer-one-box -->
-
-							<div class="footer-box span_1_of_4 col col-2">
-									</div>
-<!-- .footer-one-box -->
-				
-							<div class="footer-box span_1_of_4 col col-3 ">
-									</div>
-<!-- .footer-one-box -->
-				
-							<div class="footer-box span_1_of_4 col col-4">
-									</div>
-<!-- .footer-box -->
-				
-			
-	</div>
-<!-- .container -->
-
-	
+<div class="portfolio-footer">
+  <div class="portfolio-footer-inner">
+    <div class="portfolio-footer-brand">
+      <div class="portfolio-footer-name">Eamon Woortman</div>
+      <div class="portfolio-footer-role">Game Programmer</div>
+    </div>
+    <div class="portfolio-footer-social">
+      <a href="https://www.linkedin.com/in/eamon-woortman/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/eamonwoortman/" target="_blank" rel="noreferrer noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://gitlab.com/eamon.woortman" target="_blank" rel="noreferrer noopener" aria-label="GitLab"><i class="fab fa-gitlab"></i></a>
+      <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank" rel="noreferrer noopener" aria-label="Docker Hub"><i class="fab fa-docker"></i></a>
+    </div>
+    <div class="portfolio-footer-copyright">
+      &copy; <span id="copyright-year"></span> Eamon Woortman
+    </div>
+  </div>
 </div>
-<!-- #footer-widgets -->
-
-
-
-<div id="footer-bottom" class="clr">
-
-	
-	<div id="footer-bottom-inner" class="container clr">
-
-		
-			<div id="footer-bottom-menu" class="navigation clr">
-
-				<div class="menu-main-navigation-menu-container"><ul id="menu-main-navigation-menu-2" class="menu">
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-131 current_page_item menu-item-290"><a href="https://eamonwoortman.github.io/" aria-current="page">Home</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="https://eamonwoortman.github.io/blog/">Blog</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-597"><a href="https://eamonwoortman.github.io/projects/">Projects</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-284"><a href="https://eamonwoortman.github.io/contact/">Contact</a></li>
-</ul></div>
-			</div>
-<!-- #footer-bottom-menu -->
-
-			
-		
-			<div id="copyright" class="clr" role="contentinfo">
-				Copyright - OceanWP Theme by OceanWP			</div>
-<!-- #copyright -->
-
-			
-	</div>
-<!-- #footer-bottom-inner -->
-
-	
-</div>
-<!-- #footer-bottom -->
 
 
 	</div>
@@ -721,6 +677,6 @@ a { transition: color 0.2s ease; }
 <script src="https://eamonwoortman.github.io/wp-content/themes/oceanwp/assets/js/scroll-top.min.js?ver=1.0" id="oceanwp-scroll-top-js"></script>
 <script src="https://eamonwoortman.github.io/wp-content/themes/oceanwp/assets/js/select.min.js?ver=1.0" id="oceanwp-select-js"></script>
 <script src="https://eamonwoortman.github.io/wp-content/plugins/bj-lazy-load/js/bj-lazy-load.min.js?ver=2" id="BJLL-js"></script>
-<script>document.querySelectorAll('.dynamic-years').forEach(function(el){el.textContent=new Date().getFullYear()-parseInt(el.dataset.since)});</script>
+<script>document.querySelectorAll('.dynamic-years').forEach(function(el){el.textContent=new Date().getFullYear()-parseInt(el.dataset.since)});var cy=document.getElementById('copyright-year');if(cy)cy.textContent=new Date().getFullYear();</script>
 </body>
 </html>
