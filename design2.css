@@ -1,0 +1,421 @@
+/* ===========================================
+   Design 2: Clean Minimal Theme
+   Light, airy design with subtle shadows
+   =========================================== */
+
+.design-2 {
+    background: #fafafa;
+    color: #333333;
+}
+
+/* Navigation */
+.design-2 .main-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.design-2 .logo-text {
+    background: #333333;
+    color: white;
+}
+
+.design-2 .nav-link {
+    color: #666666;
+}
+
+.design-2 .nav-link:hover,
+.design-2 .nav-link.active {
+    color: #333333;
+}
+
+.design-2 .nav-link::after {
+    background: #333333;
+}
+
+/* Hero Section */
+.design-2 .hero {
+    background: #ffffff;
+}
+
+.design-2 .hero-greeting {
+    color: #999999;
+}
+
+.design-2 .hero-name {
+    color: #333333;
+}
+
+.design-2 .hero-title {
+    color: #666666;
+}
+
+.design-2 .hero-description {
+    color: #777777;
+}
+
+.design-2 .btn-primary {
+    background: #333333;
+    color: white;
+    box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3);
+}
+
+.design-2 .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(51, 51, 51, 0.4);
+    transform: translateY(-2px);
+}
+
+.design-2 .btn-secondary {
+    background: transparent;
+    color: #333333;
+    border: 2px solid #333333;
+}
+
+.design-2 .btn-secondary:hover {
+    background: #333333;
+    color: white;
+}
+
+.design-2 .social-link {
+    background: #f5f5f5;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+}
+
+.design-2 .social-link:hover {
+    background: #333333;
+    color: white;
+    border-color: #333333;
+}
+
+.design-2 .image-wrapper img {
+    border: 6px solid #f5f5f5;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.design-2 .image-decoration {
+    background: #e5e5e5;
+}
+
+/* About Section */
+.design-2 .about {
+    background: #f5f5f5;
+}
+
+.design-2 .section-title {
+    color: #333333;
+}
+
+.design-2 .section-divider {
+    background: #333333;
+}
+
+.design-2 .section-subtitle {
+    color: #777777;
+}
+
+.design-2 .about-intro {
+    color: #555555;
+}
+
+.design-2 .stat-item {
+    background: white;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.design-2 .stat-number {
+    color: #333333;
+}
+
+.design-2 .stat-label {
+    color: #999999;
+}
+
+.design-2 .highlight-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.design-2 .highlight-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.design-2 .highlight-card i {
+    color: #333333;
+}
+
+.design-2 .highlight-card h3 {
+    color: #333333;
+}
+
+.design-2 .highlight-card p {
+    color: #777777;
+}
+
+/* Projects Section */
+.design-2 .projects {
+    background: #ffffff;
+}
+
+.design-2 .filter-btn {
+    background: #f5f5f5;
+    color: #666666;
+    border: 1px solid #e0e0e0;
+}
+
+.design-2 .filter-btn:hover {
+    background: #e5e5e5;
+    color: #333333;
+}
+
+.design-2 .filter-btn.active {
+    background: #333333;
+    color: white;
+    border-color: #333333;
+}
+
+.design-2 .project-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.design-2 .project-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.design-2 .project-image {
+    background: #f5f5f5;
+}
+
+.design-2 .project-category {
+    background: #333333;
+    color: white;
+}
+
+.design-2 .project-icon {
+    color: #cccccc;
+}
+
+.design-2 .project-title {
+    color: #333333;
+}
+
+.design-2 .project-description {
+    color: #777777;
+}
+
+.design-2 .tech-tag {
+    background: #f5f5f5;
+    color: #555555;
+    border: 1px solid #e0e0e0;
+}
+
+.design-2 .project-details-btn {
+    color: #333333;
+}
+
+.design-2 .project-details-btn:hover {
+    color: #666666;
+}
+
+/* Modal */
+.design-2 .modal-content {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    color: #333333;
+}
+
+.design-2 .modal-close {
+    color: #999999;
+}
+
+.design-2 .modal-close:hover {
+    color: #333333;
+}
+
+.design-2 .modal-category {
+    background: #333333;
+    color: white;
+}
+
+.design-2 .modal-tech .tech-tag {
+    background: #f5f5f5;
+    color: #555555;
+    border: 1px solid #e0e0e0;
+}
+
+/* Skills Section */
+.design-2 .skills {
+    background: #f5f5f5;
+}
+
+.design-2 .skills-category {
+    color: #333333;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.design-2 .skill-name {
+    color: #333333;
+}
+
+.design-2 .skill-percent {
+    color: #999999;
+}
+
+.design-2 .skill-bar {
+    background: #e5e5e5;
+}
+
+.design-2 .skill-progress {
+    background: #333333;
+}
+
+/* Contact Section */
+.design-2 .contact {
+    background: #ffffff;
+}
+
+.design-2 .contact-item i {
+    color: #333333;
+}
+
+.design-2 .contact-item h4 {
+    color: #333333;
+}
+
+.design-2 .contact-item p,
+.design-2 .contact-item span {
+    color: #777777;
+}
+
+.design-2 a.contact-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.design-2 a.contact-item:hover {
+    transform: translateY(-5px);
+}
+
+.design-2 a.contact-item:hover span {
+    color: #333333;
+}
+
+.design-2 .contact-form input,
+.design-2 .contact-form textarea {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    color: #333333;
+}
+
+.design-2 .contact-form input:focus,
+.design-2 .contact-form textarea:focus {
+    border-color: #333333;
+    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+.design-2 .contact-form label {
+    color: #999999;
+}
+
+.design-2 .contact-form input:focus + label,
+.design-2 .contact-form input:valid + label,
+.design-2 .contact-form textarea:focus + label,
+.design-2 .contact-form textarea:valid + label {
+    background: #f5f5f5;
+    color: #333333;
+}
+
+/* Footer */
+.design-2 .footer {
+    background: #333333;
+}
+
+.design-2 .footer-logo {
+    background: white;
+    color: #333333;
+}
+
+.design-2 .footer-brand p {
+    color: #cccccc;
+}
+
+.design-2 .footer-links a {
+    color: #cccccc;
+}
+
+.design-2 .footer-links a:hover {
+    color: white;
+}
+
+.design-2 .footer-bottom {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.design-2 .footer-bottom p {
+    color: #999999;
+}
+
+/* Scrollbar */
+.design-2 ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.design-2 ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+.design-2 ::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 4px;
+}
+
+.design-2 ::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
+
+/* Selection */
+.design-2 ::selection {
+    background: rgba(51, 51, 51, 0.2);
+    color: #333333;
+}
+
+/* Additional Minimal Touches */
+.design-2 .section-header::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #333333;
+    margin: 0 auto 15px;
+}
+
+.design-2 .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #333333;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.design-2 .project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.design-2 .highlight-card::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: #333333;
+    margin: 0 auto 15px;
+}

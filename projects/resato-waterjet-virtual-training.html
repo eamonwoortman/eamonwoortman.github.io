@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resato Waterjet Virtual Training | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Simulation</span>
+                    <span class="project-date">January 29, 2017</span>
+                </div>
+                <h1 class="project-title-big">Resato Waterjet Virtual Training</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/resato-waterjet.png" alt="Resato Waterjet Virtual Training">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The first in line of many machine simulations which trains people how to use heavy machinery.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="http://www.littlechicken.nl/en/cases/resato-waterjet-virtual-training/" target="_blank">http://www.littlechicken.nl/en/cases/resato-waterjet-virtual-training/</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Unity3D</span>
+                            <span class="tech-tag">StrangeIOC</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>Resato Waterjet Virtual Training</strong> was a full 3D simulation of one of Resato's watercutting machines.</p>
+
+                    <p>The project goal was to create a simulation in which trainees could learn to work with the machines without actually being on-site. Most importantly, the simulation would allow trainees to <strong>safely work with the machine</strong> without getting themselves or others in danger.</p>
+
+                    <h2>Architecture &amp; Technical Details</h2>
+
+                    <h3>StrangeIOC Framework</h3>
+                    <p>The Resato project was an opportunity for us to work with the relatively unknown <strong>StrangeIOC</strong> framework — an inversion of control framework for Unity that uses events or signals and contexts to define game behaviour.</p>
+
+                    <h3>Reusable Component System</h3>
+                    <p>This application had to be designed so we could <strong>re-use components</strong> for a new line of machines. My job was to create a system in which we could easily define behaviour by adding components to machines.</p>
+
+                    <p>We ended up designing a system that used:</p>
+                    <ol>
+                        <li><strong>Events</strong> to change a data model</li>
+                        <li><strong>Data changed events</strong> to let the world respond to those changes</li>
+                    </ol>
+
+                    <h3>Backend Communication</h3>
+                    <p>I also created the communication between the app and the back-end using <a href="https://github.com/eamonwoortman/RestSharp.Unity" target="_blank">my own fork</a> of the <strong>RestSharp</strong> library, due to incompatibility issues between Unity and the original library.</p>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/eamonwoortman/RestSharp.Unity" target="_blank" class="project-action-link"><i class="fab fa-github"></i> GitHub (RestSharp Fork)</a>
+                        <a href="http://www.littlechicken.nl/en/cases/resato-waterjet-virtual-training/" target="_blank" class="project-action-link"><i class="fas fa-external-link-alt"></i> Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

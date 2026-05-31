@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSSL Universal Patcher | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Tools</span>
+                    <span class="project-date">May 21, 2023</span>
+                </div>
+                <h1 class="project-title-big">OpenSSL Universal Patcher</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/openssl-patcher.png" alt="OpenSSL Universal Patcher">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>OpenSSL Universal Patcher is a command-line tool designed to patch 64-bit Windows binary executables that are linked to an older version of OpenSSL (1.1.0), resolving crashes on Intel 10th/11th gen CPUs.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="https://github.com/eamonwoortman/openssl-universal-patcher/" target="_blank">https://github.com/eamonwoortman/openssl-universal-patcher/</a></li>
+                            <li><i class="fa fa-link"></i> <a href="../blog/openssl-binary-patching.html" target="_blank">Blog Post: OpenSSL binary patching</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">ASM</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/assembly/" target="_blank">Assembly</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/unity3d/" target="_blank">Unity3D</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/unreal/" target="_blank">Unreal</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>The Problem</h2>
+                    <p>Besiege on the Xbox PC/Microsoft Store platform crashes for users with specific hardware specifications. This is caused by a bug in the Unity <strong>5.4.0f3</strong> Editor (and builds made with it) where apps that use OpenSSL (i.e., secure web requests) crash on 10th and 11th gen Intel CPUs.</p>
+
+                    <h2>The Solution</h2>
+                    <p>The <strong>OpenSSL Universal Patcher</strong> is a command-line tool designed to patch 64-bit Windows binary executables that are linked to an older version of OpenSSL (1.1.0). It resolves crashes on 10th and 11th gen Intel CPUs and improves the overall stability and security of the affected binaries.</p>
+
+                    <h3>How It Works</h3>
+                    <p>The patcher replaces specific x86-64 assembly instructions to redirect register usage, fixing the compatibility issue at the binary level:</p>
+
+                    <pre><code># lea     rax, [rsi+40h]
+original: 48 8D 46 40
+# lea     r8, [rsi+40h]
+patched: 4C 8D 46 40
+# 4 bytes from the previous instruction
+offset: 4
+# cmovnz  rsi, rax
+original: 48 0F 45 F0
+# cmovnz  rsi, r8
+patched: 49 0F 45 F0</code></pre>
+
+                    <p style="text-align:center;color:#555555;font-size:0.875rem;">The patch that changes 2 OpenSSL specific instructions.</p>
+
+                    <figure>
+                        <img src="../assets/images/openssl-usage.png" alt="Example usage on Unity Editor, Unreal game and Besiege game executables">
+                        <figcaption>Example usage on Unity Editor, Unreal game and Besiege game executables</figcaption>
+                    </figure>
+
+                    <p>I wrote a blog post about creating a patch, so check out <a href="https://eamonwoortman.github.io/openssl-binary-patching/" target="_blank">this article</a> if you're interested.</p>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/eamonwoortman/openssl-universal-patcher/" target="_blank" class="project-action-link"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="../blog/openssl-binary-patching.html" target="_blank" class="project-action-link"><i class="fas fa-book"></i> Blog Post</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

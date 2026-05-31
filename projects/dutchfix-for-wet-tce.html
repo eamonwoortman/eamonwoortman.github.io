@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DutchFix for W:ET – TCE | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Modding</span>
+                    <span class="project-date">May 19, 2023</span>
+                </div>
+                <h1 class="project-title-big">DutchFix for W:ET &#8211; TCE</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/dutchfix.jpg" alt="DutchFix for W:ET">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>A QMM plugin which fixes a number of nukes and exploits in ET:TCE.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="https://github.com/eamonwoortman/qmm_dutchfix" target="_blank">https://github.com/eamonwoortman/qmm_dutchfix</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">C</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/enemy-territory/" target="_blank">Enemy Territory</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/mod/" target="_blank">Mod</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/wolfenstein/" target="_blank">Wolfenstein</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Background</h2>
+                    <p><strong>Dutchfix</strong> is a QMM plugin I created with Merlin1991 to counteract a few nukes and exploits in the awesome True Combat Elite (TCE) mod.</p>
+
+                    <blockquote><p><a href="http://www.truecombatelite.com/" target="_blank">TrueCombat:Elite (TCE)</a> is a modern world total conversion of the free, popular, stand-alone third-person shooter, Wolfenstein: Enemy Territory. That is, TCE is an entirely free game, made by gamers, for gamers.</p></blockquote>
+
+                    <h2>The Challenge</h2>
+                    <p>I was one of the community leaders of <strong>TeamNeelix</strong> (later GoNe), and we owned a couple of game servers which were quite popular. Unfortunately, when the mod was first released, it had some exploits and nuke vulnerabilities that could be used to crash a server.</p>
+
+                    <p>As a server owner, you're naturally going to get targeted by people who want to cause harm. With help from the community, we figured out how the exploits worked.</p>
+
+                    <h2>The Approach</h2>
+                    <p>Since TCE was a <strong>closed-source project</strong>, we needed a way of fixing it without access to the source code. Fortunately, the commands used to exploit the servers were all server commands, meaning we could intercept them via a hook between the engine and the mod.</p>
+
+                    <p>We used <a href="https://sourceforge.net/projects/qmm/" target="_blank">Quake3 Multimod (QMM)</a> to create a plugin that:</p>
+
+                    <ul>
+                        <li>Inspected all server commands</li>
+                        <li>Filtered and blocked exploit commands</li>
+                        <li>Optionally <strong>automatically banned nukers</strong></li>
+                    </ul>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/eamonwoortman/qmm_dutchfix" target="_blank" class="project-action-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

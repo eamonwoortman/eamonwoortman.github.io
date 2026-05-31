@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTCW 1.0PB | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Modding</span>
+                    <span class="project-date">May 19, 2023</span>
+                </div>
+                <h1 class="project-title-big">RTCW 1.0PB</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/rtcw-1-0pb.png" alt="RTCW 1.0PB">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>A cracked/reverse engineered 1.3 client so we can now use Punkbuster on the older RTCW 1.0 version</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="http://www.s4ndmod.com/wordpress/punkbuster-anti-cheat-software/" target="_blank">http://www.s4ndmod.com/wordpress/punkbuster-anti-cheat-software/</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">Assembly</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/anticheat/" target="_blank">Anticheat</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/return-to-castle-wolfenstein/" target="_blank">Return To Castle Wolfenstein</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>RTCW 1.0PB</strong> is a cracked RtCW 1.3 client/server binary which enables servers and players to use Punkbuster in the RtCW 1.0 version.</p>
+
+                    <p>RtCW 1.0 is an older version that didn't feature Punkbuster or any other anti-cheat measures by design. After seeing people didn't want to use my own anti-cheat system (Mousetrap), I decided to try bringing Punkbuster into the picture.</p>
+
+                    <p>The older 1.0 version did not differ that much from 1.3, and after earlier attempts with WolfTV_1.0, I figured I could do the same thing with Punkbuster.</p>
+
+                    <h2>What Needed to Change</h2>
+                    <p>There were two things I had to do:</p>
+                    <ol>
+                        <li><strong>Change the client</strong> so it could join RtCW 1.0 servers</li>
+                        <li><strong>Change the server</strong> so it would pose as a normal 1.0 server</li>
+                    </ol>
+
+                    <h3>Server Binary</h3>
+                    <p>To make the 1.3 server binary compatible with 1.0, I had to bypass the protocol check. This check prevented the client from joining servers with a different protocol.</p>
+
+                    <p>I used <a href="http://ollydbg.de/">OllyDbg</a> to find a specific error message: <code>ERROR: Protocol Mismatch Between Client and Server</code>. Once I found the message, I changed the assembly instruction responsible for comparing the two protocols (client/server) to always return true. This way any client would be able to connect to the server.</p>
+
+                    <p>Finally, I changed the version and protocol so it would register to the master server as a 1.0 server.</p>
+
+                    <h3>Client Binary</h3>
+                    <p>The client was easier — it only needed to receive a different server list. This was achieved by changing the filter RtCW sends to query servers from the master server.</p>
+
+                    <h2>Outcome</h2>
+                    <p>After a couple of trials, <strong>S4NDM4NN</strong> and <strong>AG3NT</strong> offered to help out. They took over the project, added additional features, and offered a central place for the community.</p>
+
+                    <p>Despite the fact it was working fine, people were not keen on using it — some experienced lag with Punkbuster. We also found out people generally don't like change: RtCW 1.0PB meant they had to download new binaries from some website, which many people simply didn't want to do.</p>
+
+                    <div class="project-actions">
+                        <a href="http://www.s4ndmod.com/wordpress/punkbuster-anti-cheat-software/" target="_blank" class="project-action-link"><i class="fas fa-external-link-alt"></i> S4NDMOD</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
