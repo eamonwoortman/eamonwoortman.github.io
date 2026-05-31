@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameMonkey ScriptMod | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Modding</span>
+                    <span class="project-date">February 13, 2017</span>
+                </div>
+                <h1 class="project-title-big">GameMonkey ScriptMod</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/gamemonkey.jpg" alt="GameMonkey ScriptMod">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>GameMonkey ScriptMod is a Quake3Multimod(QMM) plugin, which allows server admins to define the server behavior by script.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="http://www.moddb.com/mods/gamemonkey-scriptmod/" target="_blank">http://www.moddb.com/mods/gamemonkey-scriptmod/</a></li>
+                            <li><i class="fa fa-link"></i> <a href="https://github.com/eamonwoortman/gmscriptmod/" target="_blank">https://github.com/eamonwoortman/gmscriptmod/</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">GameMonkey</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/enemy-territory/" target="_blank">Enemy Territory</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/mod/" target="_blank">Mod</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/qmm/" target="_blank">QMM</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/wolfenstein/" target="_blank">Wolfenstein</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>GameMonkey Scriptmod</strong> is a project where we implemented the scripting language <a href="http://www.gmscript.com/" target="_blank">GameMonkey</a> into a <a href="https://sourceforge.net/projects/qmm/" target="_blank">Quake3 Multimod</a> plugin.</p>
+
+                    <p><a href="https://sourceforge.net/projects/qmm/" target="_blank">Quake3 Multimod</a> is a plugin manager which sits between the Quake3 engine and the actual game mod. This allows plugin developers to hook any behavior into roughly any Quake3-based game without having to modify the mod.</p>
+
+                    <p><a href="http://www.gmscript.com/" target="_blank">GameMonkey</a> is an embedded scripting language that looks similar to C, making it easy to work with for programmers and others.</p>
+
+                    <h2>Motivation</h2>
+                    <p>We started the project because we wanted more control over server behavior. We already had a PHP bot tailing the server logs, but this was slow and grew complicated quickly.</p>
+
+                    <h2>Features</h2>
+                    <p>GameMonkey Scriptmod featured:</p>
+                    <ul>
+                        <li>✅ <strong>100% scriptable admin interface</strong></li>
+                        <li>✅ <strong>Scriptable Rcon-like interface</strong></li>
+                        <li>✅ Interface for <strong>clan members</strong> (besides ref login)</li>
+                        <li>✅ Interface for <strong>clan friends</strong> (besides ref login)</li>
+                        <li>✅ <strong>Access to filesystem</strong> through <code>.gm</code> script functions</li>
+                        <li>✅ Works with <strong>ALL Enemy Territory mods</strong> (etmain, etpro, etbub, shrubmod, tce, etc.)</li>
+                        <li>✅ <strong>Easy to modify</strong> — no C/C++ knowledge necessary</li>
+                        <li>✅ <strong>Change server behavior without restart</strong> — modify script files live</li>
+                        <li>✅ <strong>Simple syntax</strong> — not as complicated as LUA</li>
+                        <li>✅ <strong>Many script examples</strong> included</li>
+                        <li>✅ <strong>Fast</strong> — GameMonkey is one of the fastest scripting languages</li>
+                        <li>✅ <strong>Define custom commands</strong> — e.g., <code>/ban ID</code>, <code>/kick ID</code>, <code>drop ID</code></li>
+                        <li>✅ <strong>Create individualized game server mods</strong></li>
+                        <li>✅ <strong>Exchange scripts</strong> with other server admins</li>
+                        <li>✅ <strong>Client-to-client private chat</strong></li>
+                        <li>✅ <strong>IRC-like channel chat</strong></li>
+                    </ul>
+
+                    <h2>Team</h2>
+                    <p>I developed this project with another developer: <strong>Apologet</strong>. Apologet started the project and later involved me. Later we got help from <strong>im2good4u</strong> and <strong>Dr.Evil</strong>.</p>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/eamonwoortman/gmscriptmod/" target="_blank" class="project-action-link"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="http://www.moddb.com/mods/gamemonkey-scriptmod/" target="_blank" class="project-action-link"><i class="fas fa-external-link-alt"></i> ModDB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

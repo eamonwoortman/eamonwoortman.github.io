@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETLive | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Gaming</span>
+                    <span class="project-date">January 1, 2017</span>
+                </div>
+                <h1 class="project-title-big">ETLive</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/etlive-cover.jpg" alt="ETLive">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>ETLive is a closed-source project which aims to be like QuakeLive but for Wolfenstein: Enemy Territory.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="https://gitlab.com/etlive" target="_blank">https://gitlab.com/etlive</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">NPAPI</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/enemy-territory/" target="_blank">Enemy Territory</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/npapi/" target="_blank">NPAPI</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/wolfenstein/" target="_blank">Wolfenstein</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>ETLive</strong> was a project that roughly started in <strong>2011</strong> with the goal of creating a browser-embedded version of Enemy Territory — essentially a QuakeLive clone for the ET community.</p>
+
+                    <h2>Inspiration: What QuakeLive Got Right</h2>
+                    <p>We thought QuakeLive did an amazing job on several components:</p>
+                    <ul>
+                        <li>🚀 <strong>Easy onboarding</strong> — one simple setup for players</li>
+                        <li>🌐 <strong>Player/clan/community website</strong> — centralized community hub</li>
+                        <li>🔍 <strong>Simple server browser</strong> — find games instantly</li>
+                        <li>📥 <strong>Automatic content download</strong> — no manual file hunting</li>
+                        <li>💬 <strong>Friends and chat system</strong> — simple but effective</li>
+                        <li>📊 <strong>Statistics, achievements, and rankings</strong> — progression systems</li>
+                    </ul>
+
+                    <h2>The Problem</h2>
+                    <p>Back then, the ET community was (and still is) divided over multiple ET versions and mods, and was suffering from ghost servers (redirect and "full bot" servers). New players wouldn't know what to download or which server to join.</p>
+
+                    <p>A new centralized community combined with official servers would solve many of these issues — and thus ETLive was born.</p>
+
+                    <h2>Phase 1: NPAPI Plugin (Prototype)</h2>
+                    <p>We quickly had a working prototype with:</p>
+                    <ul>
+                        <li><strong>One static HTML page</strong></li>
+                        <li>A <strong>FireBreath (NPAPI) plugin</strong> — responsible for rendering the game inside an HTML canvas and forwarding browser input to the game</li>
+                        <li>A <strong>login system</strong> — starting with CakePHP, later ASP.NET, and finally switching to <strong>Python with Django</strong></li>
+                    </ul>
+
+                    <h2>Phase 2: Browser Plugin Deprecation</h2>
+                    <p>During development, Google and Firefox <a href="https://www.chromium.org/developers/npapi-deprecation" target="_blank">announced they would stop supporting NPAPI plugins</a>. We were unsure how long this would take, so we continued developing, hoping one browser would still support it as an exception.</p>
+
+                    <p>Eventually, it was clear NPAPI would be gone forever — we had to change tactics.</p>
+
+                    <h2>Phase 3: Launcher Approach</h2>
+                    <p>By then, we were using the amazing <a href="https://www.etlegacy.com/" target="_blank">ETLegacy</a> project — an open-source, optimized version of Enemy Territory.</p>
+
+                    <p>One of our team members, <strong>Toni</strong>, suggested we could modify the engine to support a custom protocol (e.g., <code>etlive://some-ip</code>). This way we could start the game from the browser and become more like a launcher — similar to <strong>Battle.net</strong>.</p>
+
+                    <p>The launcher worked, and we even had communication between the servers and the back-end (which ran inside <strong>Docker containers</strong>, thanks to team member <strong>Marcus</strong>).</p>
+
+                    <figure>
+                        <img src="../assets/images/etlive-game.jpg" alt="Game Screenshot">
+                        <figcaption>ETLive in-game screenshot</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="../assets/images/etlive-serverlist.jpg" alt="Serverlist Screenshot">
+                        <figcaption>ETLive server browser</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="../assets/images/etlive-et.png" alt="ET Screenshot">
+                        <figcaption>Enemy Territory running through ETLive</figcaption>
+                    </figure>
+
+                    <h2>The End</h2>
+                    <p>Despite our progress, we decided to <strong>kill the project after 4 years</strong> due to:</p>
+                    <ul>
+                        <li>Lack of proper project management</li>
+                        <li>Too many technology switches</li>
+                        <li>Lack of time</li>
+                        <li>A non-coherent team</li>
+                    </ul>
+                    <p>There was simply not enough progress or inertia to continue.</p>
+
+                    <h2>Lessons Learned</h2>
+                    <p>Despite the outcome, the project taught us a tremendous amount about:</p>
+                    <ul>
+                        <li>Project (mis-)management</li>
+                        <li><strong>Django</strong> web framework</li>
+                        <li><strong>EmberJS</strong> frontend framework</li>
+                        <li><strong>Docker</strong> containerization</li>
+                        <li>The <strong>ET engine</strong> internals</li>
+                    </ul>
+
+                    <blockquote><p>A longer blog post containing the full post-mortem of ETLive is still pending.</p></blockquote>
+
+                    <div class="project-actions">
+                        <a href="https://gitlab.com/etlive" target="_blank" class="project-action-link"><i class="fab fa-gitlab"></i> GitLab</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

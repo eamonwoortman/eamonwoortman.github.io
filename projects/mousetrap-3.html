@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mousetrap 3 | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Anticheat</span>
+                    <span class="project-date">January 1, 2017</span>
+                </div>
+                <h1 class="project-title-big">Mousetrap 3</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/mousetrap-3.png" alt="Mousetrap 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Mousetrap3 was the third iteration of an anti-cheating system I created for Return to Castle Wolfenstein 1.0.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Links</h4>
+                        <ul class="info-links-list">
+                            <li><i class="fa fa-link"></i> <a href="https://github.com/eamonwoortman/mousetrap-rtcw" target="_blank">https://github.com/eamonwoortman/mousetrap-rtcw</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/anticheat/" target="_blank">Anticheat</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/mod/" target="_blank">Mod</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/qmm/" target="_blank">QMM</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/return-to-castle-wolfenstein/" target="_blank">Return To Castle Wolfenstein</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>Mousetrap3</strong> is a multi-component anti-cheat system containing:</p>
+                    <ol>
+                        <li><strong>Anti-cheat client</strong> — detects known cheats and injectors</li>
+                        <li><strong>Server mod</strong> — bans cheaters and communicates with the back-end</li>
+                        <li><strong>PHP/MySQL back-end</strong> — stores bans persistently</li>
+                    </ol>
+
+                    <h2>The Problem</h2>
+                    <p>Return to Castle Wolfenstein 1.0 had <strong>no anti-cheat system</strong> when I started this project. To catch cheaters, we had to:</p>
+                    <ul>
+                        <li>Manually monitor players</li>
+                        <li>Repeatedly record demos</li>
+                        <li>Collectively decide whether a player was cheating</li>
+                    </ul>
+                    <p>This was a painful process — caught cheaters could easily spoof their banned IPs and try again under a different nickname.</p>
+
+                    <h2>The Approach</h2>
+                    <p>I had the idea of checking the client by studying cheat source codes from known cheat websites. These sources hooked in between the engine and the client mod. I figured I could do the same and somehow communicate findings to the server.</p>
+
+                    <h3>Client Hook</h3>
+                    <p>The result was a simple client hook that:</p>
+                    <ul>
+                        <li>🔑 <strong>Generated a GUID</strong> from the player's hard drive</li>
+                        <li>🔍 <strong>Scanned the process list</strong> for known injectors</li>
+                        <li>📋 <strong>Scanned loaded modules</strong> for known cheats</li>
+                        <li>⚙️ <strong>Scanned for activated cheat variables</strong></li>
+                        <li>📤 <strong>Sent a list of client variables</strong> to the server</li>
+                    </ul>
+                    <p>Once the client analysed the player's instance, it sent the result to the server.</p>
+
+                    <h3>Server-Side</h3>
+                    <p>The Mousetrap server would:</p>
+                    <ul>
+                        <li><strong>Kick</strong> the cheating player</li>
+                        <li><strong>Ban by GUID</strong> — sending it to the back-end</li>
+                        <li><strong>Enforce variable limits</strong> on the 4 variables known to be used for warping or misuse:
+                            <ul>
+                                <li><code>cl_maxpackets</code></li>
+                                <li><code>rate</code></li>
+                                <li><code>cl_timenudge</code></li>
+                                <li><code>cg_shadows</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Instead of using QMM, I created a "Frankenstein library" that did the same thing as the client hook, but for the game mod on the server side.</p>
+
+                    <h3>Back-End</h3>
+                    <p>The back-end was a collection of simple <strong>PHP scripts</strong> connected to a <strong>MySQL server</strong>.</p>
+
+                    <h2>Reflection</h2>
+                    <p>I did this project in <strong>2009</strong> and I wasn't the experienced developer I am now — it was all a bit messy. In hindsight, the server was not super secure (although the data was obscured).</p>
+
+                    <p>The setup worked quite well, but people were reluctant to install it because it required manual installation. Most server admins didn't want to cooperate because they were afraid of losing players.</p>
+
+                    <p>In the end, I shut the project down due to lack of interest and started the <a href="./rtcw-1-0pb.html">RTCW 1.0PB project</a>, which worked better anyway.</p>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/eamonwoortman/mousetrap-rtcw" target="_blank" class="project-action-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSSL binary patching | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-content {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .blog-post-content h2 {
+            margin-top: 2.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+        .blog-post-content h3 {
+            margin-top: 2rem;
+        }
+        .blog-post-content pre {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        .blog-post-content code {
+            background: var(--surface);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .blog-post-content pre code {
+            background: none;
+            padding: 0;
+        }
+        .blog-post-content figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .blog-post-content figure img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .blog-post-content figure figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .blog-post-content blockquote {
+            border-left: 4px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            margin: 1.5rem 0;
+            background: rgba(100,255,218,0.05);
+            border-radius: 0 8px 8px 0;
+        }
+        .blog-post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .blog-post-content th, .blog-post-content td {
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+        }
+        .blog-post-content th {
+            background: var(--surface);
+        }
+        .blog-post-content .roadblock {
+            background: rgba(255,107,107,0.1);
+            border-left: 4px solid #ff6b6b;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            font-weight: bold;
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        .blog-post-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="design-2">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero" style="min-height: auto; padding: 3rem 0;">
+        <div class="container">
+            <a href="../projects/openssl-universal-patcher.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Project</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Blog</span>
+                    <span class="project-date">May 20, 2023</span>
+                </div>
+                <h1 class="project-title-big">OpenSSL binary patching</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="blog-post-content">
+                <p>This document describes steps taken to binary patch a crash that was occurring in Besiege (Microsoft Store, 64-bit) and the 64-bit Unity Editor.</p>
+
+                <blockquote><p>💡 Source code is available on GitHub: <a href="https://github.com/eamonwoortman/openssl-universal-patcher/" target="_blank">https://github.com/eamonwoortman/openssl-universal-patcher/</a></p></blockquote>
+
+                <hr>
+
+                <h2>Introduction 📖</h2>
+
+                <p>At the time of writing, we are trying to deploy a new update for <strong>Besiege</strong> on the Xbox PC/Microsoft Store platform.</p>
+
+                <p>However, a couple of users have reported that the game doesn't open or crashes immediately. The crash logs that we received all contained the last stack trace line:</p>
+
+                <pre><code>invalid_pointer_read_c0000005_besiege.exe!sha1_block_data_order</code></pre>
+
+                <p>After troubleshooting, we narrowed the problem down to our workshop integration (<a href="http://mod.io/" target="_blank">Mod.io</a>). It was trying to establish an HTTPS connection through the <a href="https://docs.unity3d.com/ScriptReference/Networking.UnityWebRequest.html" target="_blank">UnityWebRequest</a>.</p>
+
+                <p>Besiege was built with the older <em>64-bit 5.4.0f3 Unity</em> version, which used the <code>1.1.0-dev</code> OpenSSL library. It appears that in the Unity 5.4.0f3 Editor, and builds made with it, there's a bug where apps that use OpenSSL (i.e., secure web request) crash for users with specific hardware specifications, specifically <strong>10th Gen and 11th Gen Intel CPUs</strong>.</p>
+
+                <p>One of our team members actually had one of these Intel models, and not only did the game build crash, but the <em>64-bit 5.4.0f3 Unity Editor</em> also crashed upon launching.</p>
+
+                <p>A Reddit user called 'shishire' and commenters have already described the problem in <a href="https://www.reddit.com/r/Smite/comments/pl35y6/comment/he16988/?utm_source=share&utm_medium=web2x&context=3" target="_blank">this topic</a>:</p>
+
+                <blockquote><p>The actual failure going on here on 64-bit is happening in a dll called MctsInterface.dll, and it's occurring during a pointer dereference to a floating point number that tries to access memory that's outside the bounds of what's actually available to the application. That being said, one of the things I noticed is that the function this is a part of does a whole bunch of sha1sum operations in cpu-space.</p></blockquote>
+
+                <p>Additionally, Intel has released a short article about the issue. You can read <a href="https://www.intel.com/content/www/us/en/developer/articles/troubleshooting/openssl-sha-crash-bug-requires-application-update.html" target="_blank">their article</a> for more information and additional workarounds.</p>
+
+                <h3>Existing Workaround</h3>
+                <p>There's a workaround to the crash that involves setting an environment variable on the system:</p>
+                <ol>
+                    <li>Open the Control Panel and navigate to System and Security > System > Advanced system settings.</li>
+                    <li>Click on the <strong>Environment Variables</strong> button.</li>
+                    <li>Under <strong>System Variables</strong>, click on <strong>New</strong> and enter:
+                        <ul>
+                            <li>Variable name: <code>OPENSSL_ia32cap</code></li>
+                            <li>Variable value: <code>~0x20000000</code></li>
+                        </ul>
+                    </li>
+                    <li>Click OK to save the changes.</li>
+                </ol>
+
+                <h3>Patching Motivation</h3>
+                <p>Although this workaround might work for some users, it is not a permanent fix. Requiring users to change system environment variables does not provide a great user experience, so we sought a way to patch our game.</p>
+
+                <hr>
+
+                <h2>My patching journey 🩹</h2>
+
+                <h3>Attempt #1: Calling <code>SetEnvironmentVariable</code> ❌</h3>
+                <p>I first set out to try to replicate the environment variable workaround through code. C# has <a href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.setenvironmentvariable?view=netframework-4.0" target="_blank">Environment.SetEnvironmentVariable()</a>. So I used it to set <code>OPENSSL_ia32cap</code> to <code>~0x20000000</code>.</p>
+                <p>However, the game was <strong>still crashing</strong>. The OpenSSL initialization is part of the native Unity player and is already initialized before the mono domain is created.</p>
+
+                <div class="roadblock">🚧 Roadblock 1</div>
+
+                <h3>Attempt #2: Binary patching ❌</h3>
+                <p>I looked up the OpenSSL repository and found a function called <code>OPENSSL_cpuid_setup</code> in <a href="https://github.com/openssl/openssl/blob/c8093347f736c7991350d26048b680d0e64974a0/crypto/cpuid.c#L106" target="_blank">cpuid.c</a>. This function is responsible for initializing the OpenSSL library.</p>
+
+                <figure>
+                    <img src="../assets/images/openssl-ida-view.png" alt="IDA view of OPENSSL_cpuid_setup function">
+                    <figcaption>IDA view of the <code>OPENSSL_cpuid_setup</code> function</figcaption>
+                </figure>
+
+                <p>My options were to patch that method to always unset the <code>0x20000000</code> value, but I would need more instructions than were present. Because I have limited assembly/cracking experience, I decided to look for alternatives.</p>
+
+                <div class="roadblock">🚧 Roadblock 2</div>
+
+                <h3>Attempt #3: Binary patching (2) ✅</h3>
+                <p>I stumbled upon the fix that <a href="https://github.com/openssl/openssl/commit/7123aa81e9fb19afb11fdf3850662c5f7ff1f19c#diff-fd85954e17364d4495e1e077a5768e4e" target="_blank">OpenSSL did in their 1.0.2L patch</a>.</p>
+
+                <figure>
+                    <img src="../assets/images/openssl-commit.png" alt="OpenSSL 1.0.2L commit showing the patched instructions">
+                    <figcaption>OpenSSL 1.0.2L commit showing the SHA1 fix</figcaption>
+                </figure>
+
+                <p>This patched a function called <code>sha1_block_data_order_shaext</code>, the Intel-specific implementation of the SHA1 function. The same function where the crashes occurred.</p>
+
+                <h4>Finding the instructions to patch</h4>
+                <p>I opened the patched OpenSSL lib in IDA and looked up the <code>sha1_block_data_order_shaext</code> function.</p>
+
+                <figure>
+                    <img src="../assets/images/openssl-shaext.png" alt="IDA showing sha1_block_data_order_shaext with patched instructions">
+                    <figcaption>IDA showing the <code>sha1_block_data_order_shaext</code> function with patched instructions</figcaption>
+                </figure>
+
+                <p>The patched instructions were:</p>
+                <pre><code>lea     r8, [rsi+40h]
+...
+cmovnz  rsi, r8</code></pre>
+
+                <p>To find the unpatched version in our game binary, we reverse the patch:</p>
+                <pre><code>lea     rax, [rsi+40h]
+...
+cmovnz  rsi, rax</code></pre>
+
+                <h4>Matching the patch instructions in our game</h4>
+                <p>In IDA, I opened our game binary and found the corresponding instructions.</p>
+
+                <figure>
+                    <img src="../assets/images/openssl-hexview.png" alt="IDA Hex View showing the to-be-patched instructions">
+                    <figcaption>To-be-patched instructions, 4 bytes apart</figcaption>
+                </figure>
+
+                <p>I asked <strong>ChatGPT</strong> for the corresponding bytes:</p>
+                <pre><code># lea     rax, [rsi+40h]
+48 8D 46 40
+
+# cmovnz  rsi, rax
+48 0F 45 F0</code></pre>
+
+                <p>This matched what we saw in the Hex View! GPT also gave me the patch diff:</p>
+                <pre><code>-- First sequence --
+# lea     rax, [rsi+40h]
+original: 48 8D 46 40
+# lea     r8, [rsi+40h]
+patched: 4C 8D 46 40
+
+-- Second sequence --
+# cmovnz  rsi, rax
+original: 48 0F 45 F0
+# cmovnz  rsi, r8
+patched: 49 0F 45 F0</code></pre>
+
+                <hr>
+
+                <h2>Writing a patcher program ✍️</h2>
+
+                <p>IDA uses fixed memory offsets which change with code updates. We needed something more clever.</p>
+
+                <h3>BSDiff / BSPatch</h3>
+                <p>I used <a href="http://www.daemonology.net/bsdiff/" target="_blank">bsdiff</a> (<a href="https://github.com/LogosBible/bsdiff.net" target="_blank">.NET port</a>) to create a diff between the old and patched binary. I implemented the patcher in our build pipeline.</p>
+
+                <h3>Writing our own patcher</h3>
+                <p>We only have to patch <strong>2 bytes</strong> total. The patching information is stored in a <a href="https://github.com/eamonwoortman/openssl-universal-patcher/blob/master/src/OpenSSLUniversalPatcher/Resources/openssl.universal.patch" target="_blank">single text file</a>:</p>
+
+                <pre><code># lea     rax, [rsi+40h]
+original: 48 8D 46 40
+# lea     r8, [rsi+40h]
+patched: 4C 8D 46 40
+# 4 bytes from the previous instruction
+offset: 4
+# cmovnz  rsi, rax
+original: 48 0F 45 F0
+# cmovnz  rsi, r8
+patched: 49 0F 45 F0</code></pre>
+
+                <p>The C# patcher application:</p>
+                <ol>
+                    <li>Loads the target binary as a byte array</li>
+                    <li>Parses the patch file</li>
+                    <li>Finds occurrences of the byte sequences (exactly one)</li>
+                    <li>Replaces with patched bytes</li>
+                    <li>Writes the patched file</li>
+                </ol>
+
+                <hr>
+
+                <h2>Testing it 💯</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>App</th>
+                            <th>Engine</th>
+                            <th>Patch compatible</th>
+                            <th>Confirmed IDA</th>
+                            <th>Confirmed Hardware</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Besiege</td>
+                            <td>Unity v5.4.0f3</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>Unity Editor</td>
+                            <td>Unity v5.4.0f3</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>Test Game</td>
+                            <td>Unreal 4.21.2</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr>
+
+                <h2>Conclusion 🏁</h2>
+                <p>With a little bit of effort, we were able to repurpose the existing OpenSSL library patch into an all-purpose, universal binary patch. All code is available for free on GitHub:</p>
+
+                <p style="text-align:center;font-size:1.2rem;font-weight:bold;">
+                    <a href="https://github.com/eamonwoortman/openssl-universal-patcher/" target="_blank">https://github.com/eamonwoortman/openssl-universal-patcher/</a>
+                </p>
+
+                <p>If you found this even slightly useful or an interesting read, please consider buying me a coffee! 🙏</p>
+
+                <hr>
+
+                <h2>Resources</h2>
+                <p><strong>OpenSSL</strong></p>
+                <ul>
+                    <li><a href="https://github.com/openssl/openssl/blob/c8093347f736c7991350d26048b680d0e64974a0/crypto/cpuid.c#L106" target="_blank">cpuid.c</a> — The <code>OPENSSL_cpuid_setup</code> function</li>
+                    <li><a href="https://github.com/openssl/openssl/commit/7123aa81e9fb19afb11fdf3850662c5f7ff1f19c#diff-fd85954e17364d4495e1e077a5768e4e" target="_blank">OpenSSL 1.0.2L patch</a> — Commit with the Intel-specific SHA1 fix</li>
+                    <li><a href="https://github.com/openssl/openssl" target="_blank">OpenSSL repository</a></li>
+                </ul>
+                <p><strong>Tools</strong></p>
+                <ul>
+                    <li><a href="http://www.daemonology.net/bsdiff/" target="_blank">bsdiff</a> — Binary diffing tool</li>
+                    <li><a href="https://github.com/LogosBible/bsdiff.net" target="_blank">bsdiff.net</a> — .NET port</li>
+                    <li><a href="https://hex-rays.com/ida-free/" target="_blank">IDA Free</a> — Disassembler and debugger</li>
+                </ul>
+
+                <div class="project-actions" style="justify-content:center;margin-top:3rem;">
+                    <a href="../projects/openssl-universal-patcher.html" class="project-action-link"><i class="fas fa-arrow-left"></i> Back to Project</a>
+                    <a href="https://github.com/eamonwoortman/openssl-universal-patcher/" target="_blank" class="project-action-link"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Delivery | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">DevOps</span>
+                    <span class="project-date">February 13, 2017</span>
+                </div>
+                <h1 class="project-title-big">Continuous Delivery</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/continuous-delivery.png" alt="Continuous Delivery">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>A build pipeline which would automatically test and build a Unity3D game.</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">TeamCity</span>
+                            <span class="tech-tag">Unity3D</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/continuous-delivery/" target="_blank">Continuous Delivery</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/little-chicken-game-company/" target="_blank">Little Chicken Game Company</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/teamcity/" target="_blank">TeamCity</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/unity3d/" target="_blank">Unity3D</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>Continuous Delivery</strong> was a project I was tasked with at <a href="http://www.littlechicken.nl/en/" target="_blank">Little Chicken Game Company</a> to create a build pipeline for our Unity3D projects.</p>
+
+                    <p>Prior to this point, there were no automated systems in place to facilitate game builds.</p>
+
+                    <h2>Implementation</h2>
+                    <p>A former colleague had already tried <strong>TeamCity</strong> and was successful in making builds. After he left, I started over and began utilizing TeamCity for our builds.</p>
+
+                    <p>The pipeline worked as follows:</p>
+                    <ol>
+                        <li><strong>Source Control</strong> — TeamCity would pull source code from CVS</li>
+                        <li><strong>Build Jobs</strong> — Execute automated jobs on the pulled source</li>
+                        <li><strong>Unity Build</strong> — One job would build the Unity project using the Unity Editor's command line interface</li>
+                        <li><strong>Distribution</strong> — Another job would upload the successful build to a build storage website from which we could download new builds to our devices</li>
+                    </ol>
+
+                    <h2>Results</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Before</th>
+                                <th>After</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Production build time</td>
+                                <td><strong>4–8 hours</strong> (manual)</td>
+                                <td><strong>8 minutes</strong> (automated)</td>
+                            </tr>
+                            <tr>
+                                <td>Development bugs</td>
+                                <td>Significantly more</td>
+                                <td>Significantly fewer (unit testing)</td>
+                            </tr>
+                            <tr>
+                                <td>Build creation errors</td>
+                                <td>Frequent manual mistakes</td>
+                                <td>Consistent, automated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The improvements were dramatic:</p>
+                    <ul>
+                        <li>⏱ <strong>Production build time reduced from 4–8 hours to 8 minutes</strong></li>
+                        <li>🐛 <strong>Significantly fewer bugs and errors</strong> during development (thanks to unit testing)</li>
+                        <li>🔄 <strong>Consistent build creation</strong> — no more manual steps to forget</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WolfTV 1.0 | Eamon Woortman</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../design2.css">
+    <link rel="stylesheet" href="../project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="design-2 project-page">
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">EW</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="project-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category-badge">Modding</span>
+                    <span class="project-date">February 13, 2017</span>
+                </div>
+                <h1 class="project-title-big">WolfTV 1.0</h1>
+            </div>
+            <div class="project-featured-image">
+                <img src="../assets/images/wolftv.png" alt="WolfTV 1.0">
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="portfolio-info-panel">
+                    <div class="info-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>WolfTV_1.0 was a modified WolfTV binary which was compatible with RtCW 1.0</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Technologies</h4>
+                        <div class="info-tech-tags">
+                            <span class="tech-tag">Assembly</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Tags</h4>
+                        <div class="info-tag-links">
+                            <a href="https://eamonwoortman.github.io/project-tag/anticheat/" target="_blank">Anticheat</a>
+                            <a href="https://eamonwoortman.github.io/project-tag/return-to-castle-wolfenstein/" target="_blank">Return To Castle Wolfenstein</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="entry-content">
+                    <h2>Overview</h2>
+                    <p><strong>WolfTV_1.0</strong> is a cracked version of the amazing <a href="http://www.geeteevee.com/readme.php" target="_blank">WolfTV</a> by Brad "FonFon" Whitehead.</p>
+
+                    <p>WolfTV is a streaming server which allowed a large (if not unlimited) amount of players to spectate a live match. Without WolfTV, you couldn't accommodate that many players in a single game server.</p>
+
+                    <h2>The Problem</h2>
+                    <p>The original version created by FonFon was not compatible with Return to Castle Wolfenstein 1.0. Despite its flaws, there were still many players who played RtCW 1.0 competitively.</p>
+
+                    <p>One of these players, <strong>Orange</strong>, asked me to see if we could make it work for RtCW 1.0.</p>
+
+                    <h2>The Solution</h2>
+                    <p>After some debugging with <strong>OllyDbg</strong> and trial and error, I managed to:</p>
+                    <ol>
+                        <li><strong>Bypass the protocol check</strong> — allowing the WolfTV server to accept RtCW 1.0 clients</li>
+                        <li><strong>Modify connection information</strong> — changing what was sent on connect and to the master server</li>
+                    </ol>
+
+                    <p>This resulted in a working WolfTV server for RtCW 1.0.</p>
+
+                    <p>Unfortunately, after searching for a while, I was unable to find any remaining binaries of this project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EW</span>
+                    <p>Game Developer &amp; Systems Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/eamon-woortman" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/eamonwoortman/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/eamon.woortman/" target="_blank"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://hub.docker.com/r/eamonwoortman/" target="_blank"><i class="fab fa-docker"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eamon Woortman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
